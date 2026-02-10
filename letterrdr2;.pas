@@ -7,21 +7,21 @@
 
 //Erweitern sie die Buchstaben-Suche aus Array03 (erstes Aufgabenblatt) so, dass der Nutzer 
 //sich vorher aussuchen darf, nach welchem Buchstaben gesucht werden soll.
-program letterrdr;
+program letterrdr2;
 
-var
+var 
   input: string;
   chars: array of char;
   i, len, countLower, countUpper: integer;
-  searchLetter, searchUpper: char;
+  searchUpper, searchLower: char;
 
 begin
-  writeln('Welcher Buchstabe soll gesucht werden?');
-  readln(searchLetter);
-  
-  searchUpper := upcase(searchLetter);
+  writeln('Welcher Buchstabe (groß) soll gesucht werden?: ');
+  readln(searchUpper);
+  writeln('Welcher Buchstabe (klein) soll gesucht werden?: ');
+  readln(searchLower);
 
-  writeln('Gib einen Text ein:');
+  writeln('Gib einen Text ein: ');
   readln(input);
 
   len := length(input);
@@ -34,14 +34,19 @@ begin
   countUpper := 0;
   for i := 0 to len - 1 do
   begin
-    if chars[i] = searchLetter then
-      inc(countLower);
     if chars[i] = searchUpper then
       inc(countUpper);
+    if chars[i] = searchLower then
+      inc(countLower);
   end;
 
-    writeln('Anzahl von ', searchUpper, ': ', countUpper);
-    writeln('Anzahl von ', searchLetter, ': ', countLower);
+  writeln;
+  writeln('=== Ergebnis ===');
+  writeln('Gesuchter Buchstabe (Großbuchstabe): ', searchUpper);
+  writeln('Gesuchter Buchstabe (Kleinbuchstabe): ', searchLower);
+  writeln;
+  writeln('Anzahl von ', searchUpper, ': ', countUpper);
+  writeln('Anzahl von ', searchLower, ': ', countLower);
 
   readln;
 end.

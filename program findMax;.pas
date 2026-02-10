@@ -1,9 +1,13 @@
 {$codepage utf8}
+(*Schreiben Sie ein Programm, das das größte Element in einem Array findet. Die Größe des Array 
+und die Elemente sollen über eine Nutzereingabe eingelesen werden.
+Das Array und das größte Element sollen später als Ausgabe angezeigt werden*)
+
 program findMax;
 
 var
-  numbers: array of integer;
-  size, i, maxValue: integer;
+  numbers: array of LongInt;
+  size, i, maxValue: LongInt;
 
 begin
   writeln('Wie viele Elemente soll das Array haben?');
