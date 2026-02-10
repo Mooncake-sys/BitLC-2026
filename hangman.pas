@@ -9,7 +9,7 @@ Eingabe: m mau*)
 program hangman;
 
 uses
-  sysutils;
+  sysutils, crt;
 
 var
   word: array of char;
@@ -47,6 +47,7 @@ begin
   guessedCount := 0;
   
   writeln;
+  TextColor(LightGreen);
   writeln('=== Spieler 2 beginnt zu raten ===');
   writeln('Das Wort hat ', wordLength, ' Buchstaben.');
   writeln('Du hast 9 Versuche!');
@@ -82,6 +83,7 @@ begin
     begin
       if guessedLetters[i] = guess then
       begin
+        TextColor(Red);
         writeln('Diesen Buchstaben hast du bereits geraten!');
         writeln;
         found := true;
@@ -109,9 +111,13 @@ begin
     end;
     
     if found then
+    begin
+        TextColor(LightGreen);
       writeln('Richtig! Der Buchstabe ist im Wort!')
+    end
     else
     begin
+        TextColor(LightRed);
       writeln('Leider falsch!');
       dec(attempts);
     end;
@@ -120,6 +126,7 @@ begin
   end;
   
   //Spielende
+  TextColor(Yellow);
   writeln('=== SPIELENDE ===');
   write('Das Wort war: ');
   for i := 0 to wordLength - 1 do
@@ -128,9 +135,13 @@ begin
   writeln;
   
   if guessedCount = wordLength then
+  begin
+    TextColor(LightGreen);
     writeln('Glückwunsch! Du hast gewonnen!')
+  end
   else
   begin
+    TextColor(LightRed);
     writeln('Game Over! Du hast verloren.');
     writeln('Verbleibende Versuche: ', attempts);
   end;
